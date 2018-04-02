@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/tab2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <ImageView
+        android:id="@+id/selected_color"
+        android:layout_width="115dp"
+        android:layout_height="113dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="28dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/RGB"
+        android:layout_width="146dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="28dp"
+        android:text="@string/rgb"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/HSV"
+        android:layout_width="145dp"
+        android:layout_height="53dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/hsv"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/RGB" />
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/selected_color"
+        app:layout_constraintVertical_bias="0.0">
+
+        <HorizontalScrollView
+            android:id="@+id/horizontal_scroll"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:id="@+id/circles"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@drawable/hue"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imageView10"
+                    style="@style/ScrollEl" />
+
+                <ImageView
+                    android:id="@+id/imageView11"
+                    style="@style/ScrollEl" />
+
+                <ImageView
+                    android:id="@+id/imageView12"
+                    style="@style/ScrollEl" />
+
+                <ImageView
+                    android:id="@+id/imageView13"
+                    style="@style/ScrollEl" />
+
+                <ImageView
+                    android:id="@+id/imageView14"
+                    style="@style/ScrollEl" />
+
+                <ImageView
+                    android:id="@+id/imageView15"
+                    style="@style/ScrollEl" />
+
+                <ImageView
+                    android:id="@+id/imageView16"
+                    style="@style/ScrollEl" />
+
+                <ImageView
+                    android:id="@+id/imageView17"
+                    style="@style/ScrollEl" />
+
+                <ImageView
+                    android:id="@+id/imageView18"
+                    style="@style/ScrollEl" />
+
+                <ImageView
+                    android:id="@+id/imageView19"
+                    style="@style/ScrollEl" />
+
+                <ImageView
+                    android:id="@+id/imageView20"
+                    style="@style/ScrollEl" />
+
+                <ImageView
+                    android:id="@+id/imageView21"
+                    style="@style/ScrollEl" />
+
+                <ImageView
+                    android:id="@+id/imageView22"
+                    style="@style/ScrollEl" />
+
+                <ImageView
+                    android:id="@+id/imageView23"
+                    style="@style/ScrollEl" />
+
+                <ImageView
+                    android:id="@+id/imageView24"
+                    style="@style/ScrollEl" />
+
+                <ImageView
+                    android:id="@+id/imageView25"
+                    style="@style/ScrollEl" />
+
+            </LinearLayout>
+        </HorizontalScrollView>
+
+    </ScrollView>
+
+</android.support.constraint.ConstraintLayout>

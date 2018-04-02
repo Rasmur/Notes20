@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Notes20</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="save">save</string>
+    <string name="rgb">RGB</string>
+    <string name="hsv">HSV</string>
+    <string name="closeDrawer">close</string>
+    <string name="openDrawer">open</string>
+    <string name="list">Лента</string>
+    <string name="settings">Настройки</string>
+    <string name="about">О приложении</string>
+</resources>
