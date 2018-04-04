@@ -18,12 +18,15 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.util.Objects;
 import java.util.Random;
+
+import static android.content.Context.INPUT_METHOD_SERVICE;
 
 
 /**
@@ -149,6 +152,11 @@ public class AddFragment extends Fragment implements View.OnClickListener{
 
         if (head.getText().length() > 0) {
             getActivity().getSupportFragmentManager().popBackStack();
+
+
+            InputMethodManager imm = (InputMethodManager) getActivity().getApplicationContext().getSystemService(INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(getActivity().getWindow().getCurrentFocus().getWindowToken(), 0);
+
 
             SetArguments();
         } else {

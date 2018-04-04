@@ -18,8 +18,6 @@ import android.widget.ListView;
 
 import com.example.igory.notes20.ListView.CustomAdapter;
 import com.example.igory.notes20.ListView.ListItem;
-import com.example.igory.notes20.dummy.DummyContent.DummyItem;
-
 import java.util.ArrayList;
 import java.util.List;
 

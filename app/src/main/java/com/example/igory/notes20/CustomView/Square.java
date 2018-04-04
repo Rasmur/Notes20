@@ -1,12 +1,7 @@
-package com.example.igory.notes20;
+package com.example.igory.notes20.CustomView;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.widget.ImageView;
-
-/**
- * Created by igory on 27.03.2018.
- */
 
 public class Square extends android.support.v7.widget.AppCompatImageView {
     public Square(Context context) {

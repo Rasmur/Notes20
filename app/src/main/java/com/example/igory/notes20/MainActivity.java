@@ -18,38 +18,17 @@ import android.widget.ListView;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
-import com.example.igory.notes20.dummy.DummyContent;
-
 public class MainActivity extends AppCompatActivity implements
         AddFragment.OnFragmentInteractionListener,
         ItemFragment.OnListFragmentInteractionListener,
-        ChooseColorFragment.OnFragmentInteractionListener{
+        ChooseColorFragment.OnFragmentInteractionListener,
+        AboutProgramFragment.OnFragmentInteractionListener{
 
 
     //Defining Variables
     private Toolbar toolbar;
     private NavigationView navigationView;
     private DrawerLayout drawerLayout;
-
-
-
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        /*//noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }*/
-
-        return super.onOptionsItemSelected(item);
-    }
-
-
 
 
     android.support.v4.app.FragmentManager fragmentManager;
@@ -80,7 +59,6 @@ public class MainActivity extends AppCompatActivity implements
         navigationView = (NavigationView) findViewById(R.id.navigation_view);
 
 
-        //Setting Navigation View Item Selected Listener to handle the item click of the navigation menu
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
 
             // This method will trigger on item Click of navigation menu
@@ -93,18 +71,18 @@ public class MainActivity extends AppCompatActivity implements
                 else menuItem.setChecked(true);
 
                 //Closing drawer on item click
-                drawerLayout.closeDrawers();
+                if (drawerLayout != null)
+                    drawerLayout.closeDrawers();
 
                 fragmentManager = getSupportFragmentManager();
                 fragmentTransaction = fragmentManager
                         .beginTransaction();
 
-                //Check to see which item was being clicked and perform appropriate action
                 switch (menuItem.getItemId()){
 
                     case R.id.notesItem:
 
-                        fragmentTransaction.replace(R.id.main, itemFragment, AddFragment.TAG)
+                        fragmentTransaction.replace(R.id.main, itemFragment, ItemFragment.TAG)
                                 .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                                 .addToBackStack(ItemFragment.TAG)
                                 .commit();
@@ -112,12 +90,10 @@ public class MainActivity extends AppCompatActivity implements
                         return true;
 
                     case R.id.settings:
-                        //fragmentManager.popBackStack();
-
-                        //fragmentTransaction.hide(itemFragment);
 
                         SettingsFragment settingsFragment = new SettingsFragment();
-                        fragmentTransaction.replace(R.id.main, settingsFragment, SettingsFragment.TAG);
+                        fragmentTransaction.replace(R.id.main, settingsFragment, SettingsFragment.TAG).setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                                .addToBackStack(SettingsFragment.TAG);
                         fragmentTransaction.commit();
 
                         return true;
@@ -125,7 +101,10 @@ public class MainActivity extends AppCompatActivity implements
 
                     case R.id.about:
 
-                        Toast.makeText(getApplicationContext(),"Drafts Selected",Toast.LENGTH_SHORT).show();
+                        AboutProgramFragment aboutProgramFragment = new AboutProgramFragment();
+                        fragmentTransaction.replace(R.id.main, aboutProgramFragment, SettingsFragment.TAG).setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                                .addToBackStack(SettingsFragment.TAG);
+                        fragmentTransaction.commit();
                         return true;
 
                     default:
@@ -135,9 +114,7 @@ public class MainActivity extends AppCompatActivity implements
             }
         });
 
-        // Initializing Drawer Layout and ActionBarToggle
-        //drawerLayout = (DrawerLayout) findViewById(R.id.drawer);
-
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawer);
     }
 
     @Override
@@ -160,5 +137,10 @@ public class MainActivity extends AppCompatActivity implements
         addFragment.GetArguments(color);
 
         //temFragment.GoToAddFragment(color);
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
     }
 }

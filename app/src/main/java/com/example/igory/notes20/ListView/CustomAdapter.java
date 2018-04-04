@@ -1,32 +1,19 @@
 package com.example.igory.notes20.ListView;
 
-import android.app.Activity;
 import android.app.FragmentTransaction;
-import android.content.Context;
 import android.graphics.PorterDuff;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.support.v4.app.Fragment;
 
 import com.example.igory.notes20.AddFragment;
-import com.example.igory.notes20.ItemFragment;
-import com.example.igory.notes20.MainActivity;
 import com.example.igory.notes20.R;
 
 import java.util.List;
-
-import static android.app.PendingIntent.getActivity;
-
-/**
- * Created by igory on 18.03.2018.
- */
 
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder> {
 
@@ -34,8 +21,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
     private LayoutInflater layoutInflater;
     private Fragment fragment;
 
-    public CustomAdapter(Fragment fragment, List<ListItem> listData)
-    {
+    public CustomAdapter(Fragment fragment, List<ListItem> listData) {
         this.listData = listData;
         this.layoutInflater = LayoutInflater.from(fragment.getContext());
         this.fragment = fragment;
@@ -67,12 +53,12 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
         return listData.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         final TextView head, description, date;
         final ImageView color;
 
-        ViewHolder(View view){
+        ViewHolder(View view) {
             super(view);
             head = view.findViewById(R.id.textView3);
             description = view.findViewById(R.id.textView4);
@@ -95,7 +81,8 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
                         item.getColor(),
                         position);
 
-                android.support.v4.app.FragmentManager fragmentManager = fragment.getActivity().getSupportFragmentManager();
+                android.support.v4.app.FragmentManager fragmentManager = fragment.getActivity()
+                        .getSupportFragmentManager();
                 android.support.v4.app.FragmentTransaction fragmentTransaction = fragmentManager
                         .beginTransaction();
 
@@ -103,7 +90,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
                         .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                         .addToBackStack(AddFragment.TAG)
                         .commit();
-                }
             }
         }
     }
+}

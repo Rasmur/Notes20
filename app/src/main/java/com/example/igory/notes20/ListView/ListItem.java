@@ -3,13 +3,8 @@ package com.example.igory.notes20.ListView;
 import android.graphics.Color;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.util.Log;
 
 import java.util.Random;
-
-/**
- * Created by igory on 18.03.2018.
- */
 
 public class ListItem implements Parcelable {
 
@@ -17,17 +12,6 @@ public class ListItem implements Parcelable {
     private String description;
     private String date;
     private int color;
-
-    Random rand = new Random();
-
-    public ListItem(String head, String description, String date)
-    {
-        this.head = head;
-        this.description = description;
-        this.date = date;
-        this.color = Color.argb(255, rand.nextInt(255), rand.nextInt(255),
-                rand.nextInt(255));
-    }
 
     public ListItem(String head, String description, int color, String date )
     {
