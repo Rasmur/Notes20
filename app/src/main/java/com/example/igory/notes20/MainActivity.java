@@ -1,20 +1,12 @@
 package com.example.igory.notes20;
 
-import android.app.Activity;
-import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
-import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
@@ -22,14 +14,10 @@ public class MainActivity extends AppCompatActivity implements
         AddFragment.OnFragmentInteractionListener,
         ItemFragment.OnListFragmentInteractionListener,
         ChooseColorFragment.OnFragmentInteractionListener,
-        AboutProgramFragment.OnFragmentInteractionListener{
+        AboutProgramFragment.OnFragmentInteractionListener {
 
-
-    //Defining Variables
-    private Toolbar toolbar;
     private NavigationView navigationView;
     private DrawerLayout drawerLayout;
-
 
     android.support.v4.app.FragmentManager fragmentManager;
     android.support.v4.app.FragmentTransaction fragmentTransaction;
@@ -50,14 +38,12 @@ public class MainActivity extends AppCompatActivity implements
             itemFragment = new ItemFragment();
             fragmentTransaction.add(R.id.main, itemFragment, ItemFragment.TAG);
             fragmentTransaction.commit();
-        }
-        else
-        {
-            itemFragment = (ItemFragment) getSupportFragmentManager().findFragmentByTag(ItemFragment.TAG);
+        } else {
+            itemFragment = (ItemFragment) getSupportFragmentManager()
+                    .findFragmentByTag(ItemFragment.TAG);
         }
 
         navigationView = (NavigationView) findViewById(R.id.navigation_view);
-
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
 
@@ -65,12 +51,9 @@ public class MainActivity extends AppCompatActivity implements
             @Override
             public boolean onNavigationItemSelected(MenuItem menuItem) {
 
-
-                //Checking if the item is in checked state or not, if not make it in checked state
-                if(menuItem.isChecked()) menuItem.setChecked(false);
+                if (menuItem.isChecked()) menuItem.setChecked(false);
                 else menuItem.setChecked(true);
 
-                //Closing drawer on item click
                 if (drawerLayout != null)
                     drawerLayout.closeDrawers();
 
@@ -78,7 +61,7 @@ public class MainActivity extends AppCompatActivity implements
                 fragmentTransaction = fragmentManager
                         .beginTransaction();
 
-                switch (menuItem.getItemId()){
+                switch (menuItem.getItemId()) {
 
                     case R.id.notesItem:
 
@@ -92,7 +75,9 @@ public class MainActivity extends AppCompatActivity implements
                     case R.id.settings:
 
                         SettingsFragment settingsFragment = new SettingsFragment();
-                        fragmentTransaction.replace(R.id.main, settingsFragment, SettingsFragment.TAG).setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                        fragmentTransaction.replace(R.id.main, settingsFragment,
+                                SettingsFragment.TAG).setTransition(
+                                FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                                 .addToBackStack(SettingsFragment.TAG);
                         fragmentTransaction.commit();
 
@@ -102,13 +87,16 @@ public class MainActivity extends AppCompatActivity implements
                     case R.id.about:
 
                         AboutProgramFragment aboutProgramFragment = new AboutProgramFragment();
-                        fragmentTransaction.replace(R.id.main, aboutProgramFragment, SettingsFragment.TAG).setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                        fragmentTransaction.replace(R.id.main, aboutProgramFragment,
+                                SettingsFragment.TAG)
+                                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                                 .addToBackStack(SettingsFragment.TAG);
                         fragmentTransaction.commit();
                         return true;
 
                     default:
-                        Toast.makeText(getApplicationContext(),"Somethings Wrong",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Somethings Wrong",
+                                Toast.LENGTH_SHORT).show();
                         return true;
                 }
             }
@@ -132,11 +120,10 @@ public class MainActivity extends AppCompatActivity implements
 
     @Override
     public void onFragmentInteraction(int color) {
-        AddFragment addFragment = (AddFragment) getSupportFragmentManager().findFragmentByTag(AddFragment.TAG);
+        AddFragment addFragment = (AddFragment) getSupportFragmentManager()
+                .findFragmentByTag(AddFragment.TAG);
 
         addFragment.GetArguments(color);
-
-        //temFragment.GoToAddFragment(color);
     }
 
     @Override

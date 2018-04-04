@@ -1,13 +1,11 @@
 package com.example.igory.notes20;
 
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -17,35 +15,22 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-
-/**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link ChooseColorFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link ChooseColorFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class ChooseColorFragment extends Fragment implements View.OnClickListener {
     public static final String TAG = "ChooseColorFragment";
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    public static final int widthColor = 80;
+    public static final int widthMargin = 24;
 
     private OnFragmentInteractionListener mListener;
 
     public ChooseColorFragment() {
-        // Required empty public constructor
     }
 
     public static ChooseColorFragment newInstance(int color) {
         ChooseColorFragment fragment = new ChooseColorFragment();
         Bundle args = new Bundle();
-        args.putInt("color", color);
+        args.putInt(Constants.color, color);
         fragment.setArguments(args);
         return fragment;
     }
@@ -84,11 +69,12 @@ public class ChooseColorFragment extends Fragment implements View.OnClickListene
 
         int px = (int) getResources().getDisplayMetrics().density;
 
-        int width = px * 80;
-        int margin = 24 * px;
+        int width = px * widthColor;
+        int margin = px * widthMargin;
 
         int length = width + margin / 2;
 
+        //get Bitmap
         layout.setDrawingCacheEnabled(true);
         layout.measure(View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED),
                 View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
@@ -150,13 +136,6 @@ public class ChooseColorFragment extends Fragment implements View.OnClickListene
         mListener.onFragmentInteraction(color);
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            //mListener.onFragmentInteraction(uri);
-        }
-    }
-
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -208,18 +187,7 @@ public class ChooseColorFragment extends Fragment implements View.OnClickListene
         color = pixel;
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
     public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
         void onFragmentInteraction(int color);
     }
 }

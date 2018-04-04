@@ -11,4 +11,8 @@
     <string name="list">Лента</string>
     <string name="settings">Настройки</string>
     <string name="about">О приложении</string>
+    <string name="head">Заголовок</string>
+    <string name="description">Описание</string>
+    <string name="yandex">Yandex</string>
+    <string name="yandex_ru">yandex.ru</string>
 </resources>
