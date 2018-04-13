@@ -100,7 +100,7 @@ public class AddFragment extends Fragment implements View.OnClickListener {
 
         Time time = new Time(Time.getCurrentTimezone());
         time.setToNow();
-        bundle.putString(Constants.date, time.format("%d.%m.%Y"));
+        bundle.putString(Constants.date, time.format("%Y.%m.%d"));
 
         bundle.putInt(Constants.position, position);
 

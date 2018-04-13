@@ -33,6 +33,16 @@ public class ListItem implements Parcelable {
         this.color = source.readInt();
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        ListItem item = (ListItem) obj;
+
+        return item.getHead().equals(this.getHead())
+                && item.getDescription().equals(this.description)
+                && item.getColor() == this.color
+                && item.getDate().equals(this.date);
+    }
+
     public String getHead()
     {
         return head;

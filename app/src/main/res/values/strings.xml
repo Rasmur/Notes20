@@ -15,4 +15,5 @@
     <string name="description">Описание</string>
     <string name="yandex">Yandex</string>
     <string name="yandex_ru">yandex.ru</string>
+    <string name="sort">sort</string>
 </resources>

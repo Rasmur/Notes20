@@ -6,4 +6,7 @@ public final class Constants {
     public final static String color = "color";
     public final static String position = "position";
     public final static String date = "date";
+
+    public final static String db = "notes";
+    public final static String id = "id";
 }
